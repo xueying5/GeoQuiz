@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CheatActivity"
-    >
+    tools:context=".CheatActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,4 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_answer_button"/>
+
+    <TextView
+        android:id="@+id/apiLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="ApiLevel" />
+
+
 </LinearLayout>
