@@ -31,6 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     private int mCurrentIndex = 0;
 
     private void updateQuestion() {
+//        Log.d(TAG, "Updating question text for question #" + mCurrentIndex, new Exception());
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
@@ -102,34 +103,33 @@ public class QuizActivity extends AppCompatActivity {
         outState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
-    /*
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "调用onStart()");
+//        Log.d(TAG, "调用onStart()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "调用onStop()");
+//        Log.d(TAG, "调用onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "调用onDestroy()");
+//        Log.d(TAG, "调用onDestroy()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "调用onPause()");
+//        Log.d(TAG, "调用onPause()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "调用onResume()");
-    }*/
+//        Log.d(TAG, "调用onResume()");
+    }
 }
