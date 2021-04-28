@@ -1,8 +1,10 @@
 package com.bignerdranch.android.geoquiz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
+    private final String TAG = "QuizActivity";
+    private final String KEY_INDEX = "index";
     private Button mTrueButton;
     private Button mFalseButton;
     private ImageButton mNextButton;
@@ -45,6 +49,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "调用onCreate()");
         setContentView(R.layout.activity_quiz);
         mTrueButton = findViewById(R.id.true_button);
         mFalseButton = findViewById(R.id.false_button);
@@ -82,8 +87,49 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
+
+        if(savedInstanceState != null){
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
         updateQuestion();
     }
 
+    //保存问题的索引值， 防止横屏等导致重新问题重置到第一个
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "onSaveInstanceState() called");
+        outState.putInt(KEY_INDEX, mCurrentIndex);
+    }
 
+    /*
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "调用onStart()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "调用onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "调用onDestroy()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "调用onPause()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "调用onResume()");
+    }*/
 }
